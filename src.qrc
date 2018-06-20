@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/window/pic">
+        <file>ui/button_pushed.png</file>
+    </qresource>
+</RCC>
