@@ -34,7 +34,8 @@ HEADERS += \
         window.h \
     node.h \
     sandbox.h \
-    finger.h
+    finger.h \
+    constants.h
 
 FORMS += \
         window.ui

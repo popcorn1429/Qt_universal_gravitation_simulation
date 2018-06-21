@@ -2,7 +2,7 @@
 #include "finger.h"
 #include <QtCore>
 
-const double MAX_SPEED = 0.5;
+const double MAX_STRENGTH = 0.5;
 
 Node::Node():
     pos_x(0), pos_y(0), speed_x(0.0), speed_y(0), resistance_ratio(1),radius(1)
@@ -14,6 +14,11 @@ Node::Node(double x, double y, double r) :
     pos_x(x), pos_y(y), speed_x(0.0), speed_y(0), resistance_ratio(1), radius(r)
 {
 
+}
+
+double Node::getSpeed() const
+{
+    return qSqrt(speed_x*speed_x + speed_y*speed_y);
 }
 
 void Node::update(const QVector<Finger> &fingers, bool attract, double ratio, double elapsed)
@@ -91,9 +96,8 @@ void Node::update(const Finger &finger, bool attract, double *vecStrengths)
 void Node::restrictMaxStrength(double *vecStrengths)
 {
     double speed = qSqrt(vecStrengths[0]*vecStrengths[0] + vecStrengths[1]*vecStrengths[1]);
-    if (speed > MAX_SPEED) {
-        vecStrengths[0] = MAX_SPEED*vecStrengths[0]/speed;
-        vecStrengths[1] = MAX_SPEED*vecStrengths[1]/speed;
-        qDebug("restrict speed[%f] -> [%f, %f]\n", speed, vecStrengths[0], vecStrengths[1]);
+    if (speed > MAX_STRENGTH) {
+        vecStrengths[0] = MAX_STRENGTH*vecStrengths[0]/speed;
+        vecStrengths[1] = MAX_STRENGTH*vecStrengths[1]/speed;
     }
 }

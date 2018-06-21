@@ -1,8 +1,11 @@
 #include "window.h"
 #include "ui_window.h"
+#include "constants.h"
+
 #include <QTimer>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QColorDialog>
 
 const unsigned MAX_FINGERS_SUPPORTED = 5;
 
@@ -11,7 +14,11 @@ Window::Window(QWidget *parent) :
     ui(new Ui::Window)
 {
     ui->setupUi(this);
-    //resize(450,600);
+    QPixmap icon_pic(16,16);
+    icon_pic.fill(QColor(BACKGROUD_COLOR_R,BACKGROUD_COLOR_G,BACKGROUD_COLOR_B));
+    ui->pushButton_choose_color->setIcon(QIcon(icon_pic));
+    icon_pic.fill(QColor(INIT_BASIC_NODE_COLOR_R,INIT_BASIC_NODE_COLOR_G,INIT_BASIC_NODE_COLOR_B));
+    ui->pushButton_node_color->setIcon(QIcon(icon_pic));
 
     qDebug("widget:[%d, %d, %d, %d].\n", ui->widget->x(), ui->widget->width(), ui->widget->y(), ui->widget->height());
     sandbox = new Sandbox(ui->widget->x(), ui->widget->width(), ui->widget->y(), ui->widget->height(),
@@ -109,4 +116,22 @@ void Window::on_checkBox_atract_toggled(bool checked)
 void Window::on_checkBox_reject_toggled(bool checked)
 {
     sandbox->setReject(checked);
+}
+
+void Window::on_pushButton_choose_color_clicked()
+{
+    QColor c = QColorDialog::getColor();
+    QPixmap pic(16,16);
+    pic.fill(c);
+    ui->pushButton_choose_color->setIcon(QIcon(pic));
+    sandbox->setBackgroundColor(c);
+}
+
+void Window::on_pushButton_node_color_clicked()
+{
+    QColor c = QColorDialog::getColor();
+    QPixmap pic(16,16);
+    pic.fill(c);
+    ui->pushButton_node_color->setIcon(QIcon(pic));
+    sandbox->setBasicNodeColor(c);
 }

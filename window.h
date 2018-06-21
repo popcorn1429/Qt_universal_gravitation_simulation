@@ -41,6 +41,10 @@ private slots:
 
     void on_checkBox_reject_toggled(bool checked);
 
+    void on_pushButton_choose_color_clicked();
+
+    void on_pushButton_node_color_clicked();
+
 private:
     void initializeFingers();
 

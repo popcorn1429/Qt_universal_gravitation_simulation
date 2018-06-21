@@ -23,6 +23,9 @@ public:
 
     void updateNodes(const QVector<Finger>& fingers, double elapsed);
 
+    void setBackgroundColor(const QColor& c);
+
+    void setBasicNodeColor(const QColor& c);
 public:
     void paint(QPainter *painter);
 
@@ -30,6 +33,8 @@ private:
     QBrush background;
     QBrush circleBrush;
     QPen   circlePen;
+
+    QColor basicNodeColor;
 
     double left;
     double right;

@@ -13,6 +13,7 @@ public:
     double getPosX() const {return pos_x;}
     double getPosY() const {return pos_y;}
     double getRadius() const { return radius; }
+    double getSpeed() const;
 
     void update(const QVector<Finger>& fingers, bool attract, double ratio, double elapsed);
 
