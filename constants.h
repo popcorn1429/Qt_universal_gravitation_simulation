@@ -1,12 +1,12 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-const int BACKGROUD_COLOR_R = 223;
-const int BACKGROUD_COLOR_G = 223;
-const int BACKGROUD_COLOR_B = 223;
+extern const int BACKGROUD_COLOR_R;
+extern const int BACKGROUD_COLOR_G;
+extern const int BACKGROUD_COLOR_B;
 
-const int INIT_BASIC_NODE_COLOR_R = 203;
-const int INIT_BASIC_NODE_COLOR_G = 20;
-const int INIT_BASIC_NODE_COLOR_B = 106;
+extern const int INIT_BASIC_NODE_COLOR_R;
+extern const int INIT_BASIC_NODE_COLOR_G;
+extern const int INIT_BASIC_NODE_COLOR_B;
 
 #endif // CONSTANTS_H

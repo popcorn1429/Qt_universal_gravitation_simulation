@@ -28,7 +28,8 @@ SOURCES += \
         window.cpp \
     node.cpp \
     sandbox.cpp \
-    finger.cpp
+    finger.cpp \
+    constants.cpp
 
 HEADERS += \
         window.h \
