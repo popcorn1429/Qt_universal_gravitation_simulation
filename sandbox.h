@@ -13,7 +13,7 @@
 class Sandbox
 {
 public:
-    Sandbox(double l, double width, double u, double heigth, double i, bool a, bool j);
+    Sandbox(double l, double width, double u, double heigth, double i, bool j);
 
     void setAttract(bool a) { attract = a; }
     void setReject(bool j) { reject = j;}

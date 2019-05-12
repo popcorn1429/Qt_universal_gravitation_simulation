@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>434</width>
-    <height>527</height>
+    <width>540</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -17,15 +17,18 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Window</string>
+   <string>ForceSim</string>
+  </property>
+  <property name="windowOpacity">
+   <double>0.500000000000000</double>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
      <x>9</x>
      <y>107</y>
-     <width>416</width>
-     <height>411</height>
+     <width>521</width>
+     <height>521</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -35,13 +38,13 @@
     </sizepolicy>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>11</x>
      <y>14</y>
-     <width>411</width>
-     <height>81</height>
+     <width>521</width>
+     <height>93</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -64,7 +67,7 @@
        <double>5.000000000000000</double>
       </property>
       <property name="value">
-       <double>50.000000000000000</double>
+       <double>80.000000000000000</double>
       </property>
      </widget>
     </item>
@@ -84,7 +87,7 @@
        <number>100</number>
       </property>
       <property name="value">
-       <number>20</number>
+       <number>50</number>
       </property>
      </widget>
     </item>
@@ -111,13 +114,13 @@
        <double>0.100000000000000</double>
       </property>
       <property name="maximum">
-       <double>50.000000000000000</double>
+       <double>5.000000000000000</double>
       </property>
       <property name="singleStep">
        <double>0.100000000000000</double>
       </property>
       <property name="value">
-       <double>2.000000000000000</double>
+       <double>0.500000000000000</double>
       </property>
      </widget>
     </item>
@@ -137,17 +140,7 @@
        <number>100</number>
       </property>
       <property name="value">
-       <number>20</number>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <widget class="QCheckBox" name="checkBox_atract">
-      <property name="text">
-       <string>鼠标吸引/排斥</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
+       <number>50</number>
       </property>
      </widget>
     </item>
@@ -188,6 +181,13 @@ QPushButton:pressed{border-image: url(:/window/pic/ui/button_pushed.png);}</stri
       </property>
       <property name="text">
        <string>初始化</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>随机材质颜色</string>
       </property>
      </widget>
     </item>

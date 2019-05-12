@@ -1,9 +1,12 @@
 #include "sandbox.h"
 #include "constants.h"
 #include <QPainter>
+#include <QtCore>
 
-Sandbox::Sandbox(double l, double width, double u, double heigth, double i, bool a, bool j) :
-    left(l), right(l+width), up(u), down(u+heigth), ratio(i), attract(a), reject(j)
+const qreal COLOR_CHANGE_LIMIT_SPEED = 800.0;
+
+Sandbox::Sandbox(double l, double width, double u, double heigth, double i, bool j) :
+    left(l), right(l+width), up(u), down(u+heigth), ratio(i), reject(j)
 {
     background = QBrush(QColor(BACKGROUD_COLOR_R,BACKGROUD_COLOR_G,BACKGROUD_COLOR_B));
     basicNodeColor = QColor(INIT_BASIC_NODE_COLOR_R,INIT_BASIC_NODE_COLOR_G,INIT_BASIC_NODE_COLOR_B);
@@ -52,7 +55,13 @@ void Sandbox::paint(QPainter *painter)
 
     for (int i = 0; i < nodes.size(); ++i) {
         int node_speed = nodes[i].getSpeed() * 10000;
-        circleBrush.setColor(QColor((basicNodeColor.red()+node_speed/3)%256, (basicNodeColor.green()+node_speed/10)%256, (basicNodeColor.blue()+node_speed/5)%256));
+
+        qreal colorRate = qPow(0.6, node_speed/COLOR_CHANGE_LIMIT_SPEED);
+
+        int r = colorRate*basicNodeColor.red();
+        int g = colorRate*basicNodeColor.green();
+        int b = colorRate*basicNodeColor.blue();
+        circleBrush.setColor(QColor(r,g,b));
         circlePen.setColor(circleBrush.color());
         painter->setBrush(circleBrush);
         painter->setPen(circlePen);

@@ -22,8 +22,7 @@ Window::Window(QWidget *parent) :
 
     qDebug("widget:[%d, %d, %d, %d].\n", ui->widget->x(), ui->widget->width(), ui->widget->y(), ui->widget->height());
     sandbox = new Sandbox(ui->widget->x(), ui->widget->width(), ui->widget->y(), ui->widget->height(),
-                          ui->doubleSpinBox_ratio->value(), ui->checkBox_atract->isChecked(),
-                          ui->checkBox_reject->isChecked());
+                          ui->doubleSpinBox_ratio->value(), ui->checkBox_reject->isChecked());
 
     defaultStrength = 5.0;
     initializeFingers();
@@ -61,6 +60,7 @@ void Window::mousePressEvent(QMouseEvent *event)
         fingers[0].setStrength(defaultStrength);
         fingers[0].setPosX(event->x());
         fingers[0].setPosY(event->y());
+        sandbox->setAttract(event->buttons().testFlag(Qt::LeftButton));
         fingers[0].press();
     }
 }
@@ -107,12 +107,6 @@ void Window::on_doubleSpinBox_ratio_valueChanged(double arg1)
     sandbox->setRatio(ui->doubleSpinBox_ratio->value());
 }
 
-
-void Window::on_checkBox_atract_toggled(bool checked)
-{
-    sandbox->setAttract(checked);
-}
-
 void Window::on_checkBox_reject_toggled(bool checked)
 {
     sandbox->setReject(checked);
@@ -134,4 +128,19 @@ void Window::on_pushButton_node_color_clicked()
     pic.fill(c);
     ui->pushButton_node_color->setIcon(QIcon(pic));
     sandbox->setBasicNodeColor(c);
+}
+
+void Window::on_pushButton_clicked()
+{
+    QColor nodeColor(qrand()%256, qrand()%256, qrand()%256);
+    QPixmap picNode(16,16);
+    picNode.fill(nodeColor);
+    ui->pushButton_node_color->setIcon(QIcon(picNode));
+    sandbox->setBasicNodeColor(nodeColor);
+
+    QColor backgroundColor(qrand()%56 + 200, qrand()%56 + 200, qrand()%56 + 200);
+    QPixmap picBackground(16,16);
+    picBackground.fill(backgroundColor);
+    ui->pushButton_choose_color->setIcon(QIcon(picBackground));
+    sandbox->setBackgroundColor(backgroundColor);
 }
